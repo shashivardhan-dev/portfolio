@@ -3,18 +3,19 @@ import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 export default function ThemeToggle() {
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(true); 
 
   useEffect(() => {
-    const isDarkMode = localStorage.getItem('theme') === 'dark' ||
-      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const storedTheme = localStorage.getItem('theme');
 
-    setIsDark(isDarkMode);
-
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
+    if (storedTheme === 'light') {
+      setIsDark(false);
       document.documentElement.classList.remove('dark');
+    } else {
+      
+      setIsDark(true);
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark'); 
     }
   }, []);
 
@@ -47,3 +48,4 @@ export default function ThemeToggle() {
     </motion.button>
   );
 }
+
