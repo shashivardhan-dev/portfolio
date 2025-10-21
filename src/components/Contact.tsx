@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, Send, Pen } from 'lucide-react';
 import { useState } from 'react';
+import emailjs from 'emailjs-com';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -8,20 +9,53 @@ export default function Contact() {
     email: '',
     message: '',
   });
+
+  const [errors, setErrors] = useState<{ name?: string; email?: string; message?: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  const validateForm = () => {
+    const newErrors: typeof errors = {};
+    if (!formData.name.trim()) newErrors.name = 'Name is required.';
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required.';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Enter a valid email address.';
+    }
+    if (!formData.message.trim()) newErrors.message = 'Message cannot be empty.';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validateForm()) return;
+
     setIsSubmitting(true);
+    setSubmitStatus('idle');
 
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const result = await emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
 
-    setIsSubmitting(false);
-    setSubmitStatus('success');
-    setFormData({ name: '', email: '', message: '' });
-
-    setTimeout(() => setSubmitStatus('idle'), 5000);
+      console.log('Email sent:', result.text);
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Email error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus('idle'), 5000);
+    }
   };
 
   const socialLinks = [
@@ -46,16 +80,15 @@ export default function Contact() {
     {
       name: 'Mobile',
       icon: Send,
-      href: 'tel:+91 6303213224',
+      href: 'tel:+916303213224',
       color: 'hover:text-green-500',
     },
     {
-    name: 'Blog',
-    icon:  Pen,
-    href: 'https://hashnode.com/@Shashi-Dev',
-    color: 'hover:text-green-500',
-    }
-
+      name: 'Blog',
+      icon: Pen,
+      href: 'https://hashnode.com/@Shashi-Dev',
+      color: 'hover:text-green-500',
+    },
   ];
 
   return (
@@ -133,12 +166,18 @@ export default function Contact() {
                 <input
                   type="text"
                   id="name"
-                  required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-slate-900 dark:text-white"
+                  className={`w-full px-4 py-3 bg-white dark:bg-slate-800 border ${
+                    errors.name
+                      ? 'border-red-500 focus:ring-red-500'
+                      : 'border-slate-300 dark:border-slate-700 focus:ring-blue-600'
+                  } rounded-lg focus:ring-2 focus:border-transparent transition-all text-slate-900 dark:text-white`}
                   placeholder="Your name"
                 />
+                {errors.name && (
+                  <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+                )}
               </div>
 
               <div>
@@ -151,12 +190,18 @@ export default function Contact() {
                 <input
                   type="email"
                   id="email"
-                  required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-slate-900 dark:text-white"
+                  className={`w-full px-4 py-3 bg-white dark:bg-slate-800 border ${
+                    errors.email
+                      ? 'border-red-500 focus:ring-red-500'
+                      : 'border-slate-300 dark:border-slate-700 focus:ring-blue-600'
+                  } rounded-lg focus:ring-2 focus:border-transparent transition-all text-slate-900 dark:text-white`}
                   placeholder="your.email@example.com"
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                )}
               </div>
 
               <div>
@@ -168,13 +213,19 @@ export default function Contact() {
                 </label>
                 <textarea
                   id="message"
-                  required
                   rows={5}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all resize-none text-slate-900 dark:text-white"
+                  className={`w-full px-4 py-3 bg-white dark:bg-slate-800 border ${
+                    errors.message
+                      ? 'border-red-500 focus:ring-red-500'
+                      : 'border-slate-300 dark:border-slate-700 focus:ring-blue-600'
+                  } rounded-lg focus:ring-2 focus:border-transparent transition-all resize-none text-slate-900 dark:text-white`}
                   placeholder="Your message..."
                 />
+                {errors.message && (
+                  <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                )}
               </div>
 
               <motion.button
@@ -201,6 +252,15 @@ export default function Contact() {
                   className="text-green-600 dark:text-green-400 text-center font-medium"
                 >
                   Message sent successfully!
+                </motion.p>
+              )}
+              {submitStatus === 'error' && (
+                <motion.p
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-600 dark:text-red-400 text-center font-medium"
+                >
+                  Something went wrong. Please try again.
                 </motion.p>
               )}
             </form>
