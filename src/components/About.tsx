@@ -53,8 +53,8 @@ const techStack = [
 ];
 
 export default function About() {
-  const viewResumeUrl =
-    "https://docs.google.com/document/d/1OBZeHSo6yJcdIodjFAQkTVlUi0ypJM2eeYg67vKf8gM/view";
+  const imageKitResumeUrl =
+   "https://ik.imagekit.io/shashi/Shashivardhan_Resume_Full_Stack.pdf"
 
   return (
     <section id="about" className="py-24 bg-white dark:bg-slate-900">
@@ -93,7 +93,7 @@ export default function About() {
           </p>
 
           <motion.a
-            href={viewResumeUrl}
+            href={`${imageKitResumeUrl}?t=${Date.now()}`}
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
