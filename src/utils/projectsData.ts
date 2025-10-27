@@ -41,9 +41,9 @@ export default function getProjectsData(projectName: string) {
       github: "https://github.com/shashivardhan-dev/ThumbGen",
       demo: "http://43.204.220.56/",
       demoCredentials: {
-        email: "shashiavardhan.dev@gmail.com",
-        password: "demo123",
-      },
+        email: "shashivardhan.dev@gmail.com",
+        password: "Demo@Shashi630",
+      }, 
       techStack: [
         {
           name: "Next.js",
