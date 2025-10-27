@@ -1,58 +1,39 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
+import ThumbGen from  '../../public/projects/ThumbGen.png';
+import Portfolio from '../../public/projects/Portfolio.png';
+import { useNavigate } from 'react-router-dom';
 
 const projects = [
   {
-    title: 'E-Commerce Platform',
-    description: 'Full-stack e-commerce solution with payment integration, inventory management, and real-time analytics. Built with MERN stack and Stripe.',
-    image: 'https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
+    title: 'YouTube Thumbnail Generator',
+    url: 'youtube-thumbnail-generator',
+    description: 'Full-stack web application for generating thumbnails for YouTube videos.',
+    image: ThumbGen,
+    github: 'https://github.com/shashivardhan-dev/ThumbGen',
+    demo: 'http://43.204.220.56/',
+    tags: ['Next.js', 'PostgreSQL', 'Gen AI', 'TypeScript', 'Websockets', 'Queues'],
   },
   {
-    title: 'Real-Time Chat Application',
-    description: 'Scalable chat platform with WebSocket support, file sharing, and end-to-end encryption. Handles 10k+ concurrent users.',
-    image: 'https://images.pexels.com/photos/1181248/pexels-photo-1181248.jpeg?auto=compress&cs=tinysrgb&w=800',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    tags: ['React', 'Socket.io', 'Express', 'PostgreSQL'],
-  },
-  {
-    title: 'Project Management Dashboard',
-    description: 'Comprehensive project tracking system with team collaboration, task automation, and detailed reporting features.',
-    image: 'https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    tags: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
-  },
-  {
-    title: 'Social Media Analytics',
-    description: 'Advanced analytics platform for social media insights with data visualization, sentiment analysis, and trend forecasting.',
-    image: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    tags: ['React', 'Python', 'MongoDB', 'Docker'],
-  },
-  {
-    title: 'Learning Management System',
-    description: 'Educational platform with course management, video streaming, progress tracking, and interactive assessments.',
-    image: 'https://images.pexels.com/photos/4144923/pexels-photo-4144923.jpeg?auto=compress&cs=tinysrgb&w=800',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    tags: ['React', 'Express', 'MongoDB', 'AWS'],
-  },
-  {
-    title: 'Healthcare Appointment System',
-    description: 'HIPAA-compliant booking system for healthcare providers with patient management, scheduling, and telehealth integration.',
-    image: 'https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg?auto=compress&cs=tinysrgb&w=800',
-    github: 'https://github.com',
-    demo: 'https://example.com',
-    tags: ['React', 'Node.js', 'PostgreSQL', 'Docker'],
-  },
+    title: "Portfolio",
+    url: "portfolio",
+    description: "Personal portfolio website showcasing my skills and projects.",
+    image: Portfolio,
+    github: "https://github.com/shashivardhan-dev/portfolio",
+    demo: "https://shashivardhan.is-a.dev",
+    tags: ["React", "Tailwind CSS", "TypeScript", "Framer Motion"],
+  }
 ];
 
 export default function Projects() {
+  const navigate = useNavigate();
+  const onClick = (projectName: string) => {
+    console.log(projectName);
+   navigate(`/project?project=${projectName}`);
+  };
+
+
+
   return (
     <section id="projects" className="py-24 bg-slate-50 dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-6">
@@ -76,6 +57,7 @@ export default function Projects() {
           {projects.map((project, index) => (
             <motion.div
               key={index}
+              onClick={ () =>onClick(project.url)}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}

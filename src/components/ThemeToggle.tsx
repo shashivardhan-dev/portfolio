@@ -6,17 +6,42 @@ export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(true); 
 
   useEffect(() => {
+    // Check if user has manually set a theme preference
     const storedTheme = localStorage.getItem('theme');
 
     if (storedTheme === 'light') {
       setIsDark(false);
       document.documentElement.classList.remove('dark');
-    } else {
-      
+    } else if (storedTheme === 'dark') {
       setIsDark(true);
       document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark'); 
+    } else {
+      // No stored preference, use system preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setIsDark(prefersDark);
+      
+      if (prefersDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
     }
+
+    // Listen for system theme changes (only if no manual preference is set)
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e: MediaQueryListEvent) => {
+      if (!localStorage.getItem('theme')) {
+        setIsDark(e.matches);
+        if (e.matches) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
   const toggleTheme = () => {
@@ -48,4 +73,3 @@ export default function ThemeToggle() {
     </motion.button>
   );
 }
-
