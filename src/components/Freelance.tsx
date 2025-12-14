@@ -5,7 +5,7 @@ const freelanceWork = [
   {
     role: "Freelance Backend Developer",
     client: "Chat application",
-    period: "2023 - Present",
+    period: "OCT 2023 - Present",
     description: " delivering custom backend solutions for diverse business needs.",
     achievements: [
       "Built and maintained a chat application using Node.js.",
