@@ -2,10 +2,16 @@ import { motion } from "framer-motion";
 import { Briefcase } from "lucide-react";
 
 const experiences = [
+  { 
+    company: "Finagle Financial Services Private Limited (Tezcredit)",
+    role: "Senior Full Stack Developer",
+    period: "DEC 2025  -  Present",
+    achievements:[]
+  },
   {
     company: "FiftyFive Technologies",
-    role: "Senior Full Stack Developer",
-    period: " JULY 2022 - Present",
+    role: "Full Stack Developer",
+    period: " JULY 2022 - NOV 2025",
     achievements: [
       "Developed and maintained an E-Commerce platform serving 50,000+ users, selling digital subscriptions with multiple payment gateways (Stripe, NetsEasy)  using Node.js, Express.js, and PostgreSQL",
       "Implemented subscription management features, leading to a 30% increase in user retention through automatic recurring payments and voucher-based discounts",
@@ -16,7 +22,7 @@ const experiences = [
   },
   {
     company: "FunctionUp",
-    role: "Full Stack MERN Developer",
+    role: "Backend Developer",
     period: "FEBRUARY 2022  -  JULY 2022",
     achievements: [
       "Gained hands-on experience in Node.js, Express.js, and MongoDB (Mongoose) for backend development",

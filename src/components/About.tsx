@@ -50,6 +50,18 @@ const techStack = [
     name: "Github Actions",
     icon: "https://raw.githubusercontent.com/gilbarbara/logos/de2c1f96ff6e74ea7ea979b43202e8d4b863c655/logos/github-actions.svg",
   },
+  {
+    name: "OpenAI",
+    icon: "https://cdn.sologo.ai/2025/0102/20250102113452867.png",
+  },
+  {
+    name: "LangChain",
+    icon: "https://s.yimg.com/zb/imgv1/35ce4015-49e5-39f7-bc31-343f23374285/t_500x300",
+  },
+  {
+    name: "LangGraph",
+    icon:"https://miro.medium.com/v2/resize:fit:1358/1*71hogRfV6iFMjISzZ6yIwQ.jpeg"
+  }
 ];
 
 export default function About() {

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, Send, Pen } from 'lucide-react';
+import { Mail, Github, Linkedin, Send, Pen, Briefcase } from 'lucide-react';
 import { useState } from 'react';
 import emailjs from 'emailjs-com';
 
@@ -7,6 +7,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    projectType: 'General Inquiry',
     message: '',
   });
 
@@ -41,6 +42,7 @@ export default function Contact() {
         {
           name: formData.name,
           email: formData.email,
+          project_type: formData.projectType,
           message: formData.message,
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
@@ -48,7 +50,7 @@ export default function Contact() {
 
       console.log('Email sent:', result.text);
       setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: '', email: '', projectType: 'General Inquiry', message: '' });
     } catch (error) {
       console.error('Email error:', error);
       setSubmitStatus('error');
@@ -102,11 +104,11 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            Get In Touch
+            Start a Project
           </h2>
           <div className="w-20 h-1 bg-blue-600 mx-auto mb-4"></div>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? Feel free to reach out!
+            Ready to bring your ideas to life? Let's discuss your project and how I can help.
           </p>
         </motion.div>
 
@@ -118,12 +120,11 @@ export default function Contact() {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
-              Let's Connect
+              Contact Information
             </h3>
             <p className="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-              I'm always open to discussing new projects, creative ideas, or opportunities
-              to be part of your visions. Whether you have a question or just want to say hi,
-              I'll try my best to get back to you!
+              I'm currently accepting new freelance projects. Whether it's a new website, 
+              app development, or technical consulting, I'm here to deliver results.
             </p>
 
             <div className="space-y-4">
@@ -206,10 +207,34 @@ export default function Contact() {
 
               <div>
                 <label
+                  htmlFor="projectType"
+                  className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
+                >
+                  Project Type
+                </label>
+                <div className="relative">
+                  <Briefcase className="absolute top-3.5 left-4 w-5 h-5 text-slate-400" />
+                  <select
+                    id="projectType"
+                    value={formData.projectType}
+                    onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                    className="w-full pl-12 pr-4 py-3 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all text-slate-900 dark:text-white appearance-none"
+                  >
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Full Stack App">Full Stack Application</option>
+                    <option value="Website Development">Website Development</option>
+                    <option value="API Integration">API Integration</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label
                   htmlFor="message"
                   className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2"
                 >
-                  Message
+                  Project Details
                 </label>
                 <textarea
                   id="message"
@@ -221,7 +246,7 @@ export default function Contact() {
                       ? 'border-red-500 focus:ring-red-500'
                       : 'border-slate-300 dark:border-slate-700 focus:ring-blue-600'
                   } rounded-lg focus:ring-2 focus:border-transparent transition-all resize-none text-slate-900 dark:text-white`}
-                  placeholder="Your message..."
+                  placeholder="Tell me about your project, timeline, and budget..."
                 />
                 {errors.message && (
                   <p className="text-red-500 text-sm mt-1">{errors.message}</p>
