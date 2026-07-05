@@ -65,8 +65,7 @@ const techStack = [
 ];
 
 export default function About() {
-  const imageKitResumeUrl =
-   "https://ik.imagekit.io/shashi/Shashivardhan_Resume_Full_Stack.pdf"
+  const resumeUrl = "/Shashivardhan_Reddy_FullStack_Developer.pdf";
 
   return (
     <section id="about" className="py-24 bg-white dark:bg-slate-900">
@@ -105,7 +104,7 @@ export default function About() {
           </p>
 
           <motion.a
-            href={`${imageKitResumeUrl}?t=${Date.now()}`}
+            href={resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
