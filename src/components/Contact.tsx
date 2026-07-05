@@ -64,7 +64,7 @@ export default function Contact() {
     {
       name: 'Email',
       icon: Mail,
-      href: 'mailto:shashivardhan@example.com',
+      href: 'mailto:shashivardhan.dev@gmail.com',
       color: 'hover:text-red-500',
     },
     {
@@ -123,7 +123,7 @@ export default function Contact() {
               Contact Information
             </h3>
             <p className="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
-              I'm currently accepting new freelance projects. Whether it's a new website, 
+              I'm always open to discussing new projects and opportunities. Whether it's a new website,
               app development, or technical consulting, I'm here to deliver results.
             </p>
 

@@ -2,34 +2,39 @@ import { motion } from "framer-motion";
 import { Briefcase } from "lucide-react";
 
 const experiences = [
-  { 
-    company: "Finagle Financial Services Private Limited (Tezcredit)",
-    role: "Senior Full Stack Developer",
-    period: "DEC 2025  -  Present",
-    achievements:[]
+  {
+    company: "TezCredit (Finagle Financial Pvt Ltd)",
+    role: "Full Stack Developer",
+    period: "DEC 2025 - Present",
+    achievements: [
+      "Contributed to the design and implementation of loan origination, customer onboarding, KYC, credit assessment, and disbursement workflows for a digital lending platform using Node.js, Nest.js, React, and PostgreSQL",
+      "Implemented idempotency handling for money movement APIs supporting 25K+ loan disbursals, preventing duplicate transactions and ensuring reliable fund transfers",
+      "Designed and implemented a lead management system handling 10K+ leads per day, supporting customer acquisition, lead attribution, and onboarding workflows",
+      "Developed CKYC (Central KYC) search and download functionality to streamline customer verification and regulatory compliance",
+      "Optimized MIS reports, reducing report generation time by 20% and improving data accuracy for marketing and support teams",
+      "Built a health metrics dashboard for real-time monitoring of system and service health, and resolved 20+ production bugs across the full stack",
+    ],
   },
   {
     company: "FiftyFive Technologies",
-    role: "Full Stack Developer",
-    period: " JULY 2022 - NOV 2025",
+    role: "Software Engineer",
+    period: "JULY 2022 - NOV 2025",
     achievements: [
-      "Developed and maintained an E-Commerce platform serving 50,000+ users, selling digital subscriptions with multiple payment gateways (Stripe, NetsEasy)  using Node.js, Express.js, and PostgreSQL",
-      "Implemented subscription management features, leading to a 30% increase in user retention through automatic recurring payments and voucher-based discounts",
-      "Optimized admin operations, improving order, subscription, voucher, payment, and refund management—reducing manual effort by 40%",
-      "Designed and developed an admin panel, cutting down data retrieval time by 50% and streamlining operational efficiency",
-      "Successfully integrated Stripe, ensuring 99.9% payment success rate and reducing payment failures by 20%",
+      "Developed and maintained a high-traffic E-Commerce platform for digital subscriptions, integrating Stripe and NetsEasy payment gateways using Node.js, Express.js, and PostgreSQL",
+      "Boosted user retention by 30% through automated subscription renewals and a voucher-based discount system",
+      "Architected and maintained a centralized Redux store to streamline state management and reduce component re-renders by 25%",
+      "Integrated Redis caching, improving API response times by 40% and reducing database query load by 30%",
+      "Optimized payment pipelines in Stripe, achieving a 99% transaction success rate",
     ],
   },
   {
     company: "FunctionUp",
-    role: "Backend Developer",
-    period: "FEBRUARY 2022  -  JULY 2022",
+    role: "Backend Developer Trainee",
+    period: "FEB 2022 - JULY 2022",
     achievements: [
-      "Gained hands-on experience in Node.js, Express.js, and MongoDB (Mongoose) for backend development",
-      "Implemented AWS S3 and AWS SNS for scalable cloud storage and notifications",
-      "Built efficient caching solutions using Redis to optimize system performance",
-      "Followed industry best practices in coding, API development, and version control (Git)",
-      "Actively participated in coding competitions on platforms like HackerRank and CodeZinger",
+      "Engineered backend microservices using Node.js and Express.js, integrating MongoDB (Mongoose) for dynamic data models",
+      "Leveraged AWS S3 and SNS for scalable file storage and event-driven notifications",
+      "Enhanced backend efficiency through Redis caching, reducing average API latency by 25%",
     ],
   },
 ];

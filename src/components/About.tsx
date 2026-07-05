@@ -92,16 +92,16 @@ export default function About() {
           className="text-center md:text-left mb-20"
         >
           <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-            I'm a passionate Full Stack MERN Developer with expertise in
-            building scalable, high-performance web applications. With
-            experience at leading tech companies, I specialize in creating
-            seamless user experiences and robust backend systems.
+            I'm a Full Stack Developer with 4 years of experience specializing
+            in fintech and payment systems. I work across digital lending, KYC,
+            credit workflows, subscription platforms, and high-scale transaction
+            systems using Node.js, Nest.js, React, and PostgreSQL.
           </p>
           <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8">
-            My focus is on writing clean, maintainable code and leveraging
-            modern technologies to solve complex problems. I'm committed to
-            continuous learning and staying updated with the latest industry
-            trends.
+            My focus is on building scalable, reliable backend services and
+            responsive React interfaces, with a strong emphasis on payment
+            gateway integrations, clean maintainable code, and solving complex
+            problems at scale.
           </p>
 
           <motion.a

@@ -30,7 +30,7 @@ export default function Hero() {
               transition={{ delay: 0.2 }}
               className="inline-block px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-medium text-sm mb-6 border border-blue-200 dark:border-blue-800"
             >
-              Available for Freelance Projects/Part Time Projects
+              Full Stack Developer · Fintech &amp; Payment Systems
             </motion.div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 tracking-tight">
